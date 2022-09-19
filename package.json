@@ -1,21 +1,25 @@
 {
-  "name": "evmvjs",
+  "name": "evmjs",
   "version": "1.0.0",
-  "description": "EVM in vanilla JS for educational purposes",
+  "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "lint": "prettier --write src/"
   },
-  "author": "Rodrigo Herrera I.",
+  "keywords": [],
+  "author": "",
   "license": "MIT",
-  "devDependencies": {
-    "prettier": "^2.7.1"
-  },
   "dependencies": {
-    "@ethereumjs/block": "^4.0.0",
     "@ethereumjs/common": "^3.0.0",
     "@ethereumjs/tx": "^4.0.0",
     "@ethereumjs/util": "^8.0.0",
+    "@ethereumjs/vm": "^6.0.0",
+    "ethereum-cryptography": "^1.1.2",
+    "ethers": "^5.7.1",
     "solc": "^0.8.17"
+  },
+  "type": "module",
+  "devDependencies": {
+    "prettier": "^2.7.1"
   }
 }

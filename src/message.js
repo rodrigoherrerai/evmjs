@@ -1,4 +1,4 @@
-const { Address } = require("@ethereumjs/util");
+import { Address } from "@ethereumjs/util";
 
 const defaults = {
     value: BigInt(0),
@@ -11,7 +11,7 @@ const defaults = {
     gasRefund: BigInt(0),
 };
 
-class Message {
+export class Message {
     constructor(opts) {
         this.to = opts.to;
         this.value = opts.value ?? defaults.value;
@@ -28,15 +28,17 @@ class Message {
         this.delegatecall = opts.delegatecall ?? defaults.delegatecall;
         this.authcallOrigin = opts.authcallOrigin;
         this.gasRefund = opts.gasRefund ?? defaults.gasRefund;
+
+        if (this.value < 0) {
+            throw new Error(`value field cannot be negative, received ${this.value}`);
+        }
     }
 
     get codeAddress() {
         const codeAddress = this._codeAddress ?? this.to;
         if (!codeAddress) {
-            throw new Error("Missing code address");
+            throw new Error("Missing codeAddress");
         }
         return codeAddress;
     }
 }
-
-module.exports.Message = Message;
